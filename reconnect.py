@@ -3,8 +3,8 @@
 
 
 from abc import ABC
-from peewee import MySQLDatabase, InterfaceError, SENTINEL
-from playhouse.shortcuts import ReconnectMixin
+from peewee import MySQLDatabase, InterfaceError, SENTINEL  # type: ignore
+from playhouse.shortcuts import ReconnectMixin  # type: ignore
 
 
 class ReconnectMixinNew(ReconnectMixin, MySQLDatabase):
