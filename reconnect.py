@@ -7,7 +7,7 @@ from peewee import MySQLDatabase, InterfaceError, SENTINEL
 from playhouse.shortcuts import ReconnectMixin
 
 
-class ReconnectMixinNew(ReconnectMixin):
+class ReconnectMixinNew(ReconnectMixin, MySQLDatabase):
     def execute_sql(self, sql, params=None, commit=SENTINEL):
         try:
             return super(ReconnectMixin, self).execute_sql(sql, params, commit)
@@ -31,5 +31,5 @@ class ReconnectMixinNew(ReconnectMixin):
             return super(ReconnectMixin, self).execute_sql(sql, params, commit)
 
 
-class ReconnectMySQLDatabase(ReconnectMixinNew, MySQLDatabase, ABC):
+class ReconnectMySQLDatabase(ReconnectMixinNew, ABC):
     pass
