@@ -26,7 +26,9 @@ class ReconnectMixinNew(ReconnectMixin, MySQLDatabase):
 
             if not self.is_closed():
                 self.close()
-                self.connect()
+
+            # re-connect
+            self.connect()
 
             return super(ReconnectMixin, self).execute_sql(sql, params, commit)
 
